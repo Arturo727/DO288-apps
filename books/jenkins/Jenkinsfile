@@ -98,12 +98,12 @@ oc expose svc/${APP_NAME}
                     }
                 }
             }
-ervice       }
+      }
 
         stage('Promote to Staging Env') {
             steps {
                 timeout(time: 60, unit: 'MINUTES') {
-                    inputervicemessage: "Promote to Staging?"
+                    input message: "Promote to Staging?"
                 }
                 script {
 openshift.withCluster() {
@@ -111,7 +111,7 @@ openshift.tag("${DEV_PROJECT}/books:latest", "${STAGE_PROJECT}/books:stage")
 }
 }
             }
-ervice       }
+    }
 
         stage('Deploy to Staging Env') {
             steps {
@@ -153,3 +153,4 @@ return (it.object().status.phase == "Running")
         }
     }
 }
+
